@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Java Script Example 1.6</title>
+	<script type="text/javascript">
+	function judge () {
+		if (document.forms[0].name.value == "")
+		{
+			alert("Please Input your name!");
+			document.forms[0].name.focus();
+			return false;
+		}
+
+		for (var i=0; i < document.forms[0].age.value.length; i++)
+		{
+			var c = document.forms[0].age.value.charAt(i);
+			if (c < '0' || c > '9') {
+				alert("Age should be an integer！");
+				document.forms[0].age.focus();
+				document.forms[0].age.select();
+				return false;
+			}
+		}
+
+		var ageValue = parseInt(document.forms[0].age.value);
+		if (ageValue < 10) {
+			alert("You can not be so young!");
+			document.forms[0].age.focus();
+			document.forms[0].age.select();
+			return false;
+		}
+
+		if (ageValue > 150) {
+			alert("You can not be so old!");
+			document.forms[0].age.focus();
+			document.forms[0].age.select();
+			return false;
+		}
+
+		if (document.forms[0].pwd.value == "" || document.forms[0].confirm.value == "") {
+			alert("The passwords can not be empty!");
+			document.forms[0].pwd.focus();
+			document.forms[0].pwd.select();
+			return false;
+		} else if (document.forms[0].pwd.value.length != 6) {
+			alert("The length of password is not equal 6!");
+			document.forms[0].pwd.focus();
+			document.forms[0].pwd.select();
+			return false;
+		}
+
+		if (document.forms[0].pwd.value != document.forms[0].confirm.value) {
+			alert("The passwords are not same!");
+			document.forms[0].pwd.focus();
+			document.forms[0].pwd.select();
+			return false;
+		}
+		/*
+		var pos = document.forms[0].email.value.search("@");
+		if (pos == -1)
+		{
+			alert("Please input the correct email address!");
+			document.forms[0].email.focus();
+			document.forms[0].email.select();
+			return false;
+		}
+		*/
+		var value =document.forms[0].email.value;
+		var apos = value.indexOf("@");
+		var dotpos = value.lastIndexOf(".");
+		if (apos<1||dotpos - apos<2) {
+			alert("Please input the correct email address!");
+			document.forms[0].email.focus();
+			document.forms[0].email.select();
+			return false;
+		}
+	}
+	</script>
+</head>
+<body>
+<center>
+	欢迎加入我们!</br>
+	你需要在这里注册</br>
+	<form method = "POST" action = "#" onsubmit="return judge();">
+		<table>
+			<tr>
+				<td width="150">你的名字</td>
+				<td><input type="text" name="name"/></td>
+			</tr>
+			<tr>
+				<td>密 码</td>
+				<td><input type="password" name="pwd"/></td>
+			</tr>
+			<tr>
+				<td>确认密码</td>
+				<td><input type="password" name="confirm"/></td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+				<input type="radio" name="gender" value="male" >男
+				<input type="radio" name="gender" value="female" checked="true">女
+				</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td><input type="text" name="age"/></td>
+			</tr>
+			<tr>
+				<td>学历</td>
+				<td>
+					<select>
+						<option>初中</option>
+						<option>高中</option>
+						<option>大专</option>
+						<option>本科</option>
+						<option>研究生</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>邮箱地址</td>
+				<td><input type="text" name="email"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="favour">
+				我热爱计算机!</td>
+			</tr>
+			<tr>
+				<td>学生干部竞选宣言</td>
+				<td><textarea rows = "3" cols = "30" name = "slogon" ></textarea></td>
+				
+			</tr>
+			<tr>
+				<td align="middle"><input type="reset"></td>
+				<td><input type="submit"/></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</body>
+</html>

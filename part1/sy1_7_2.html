@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Java Script Example</title>
+	<script type="text/javascript">
+		function alerter () {
+			if (confirm("Exit?")) {
+				window.alert("谢谢!");
+				return true;
+			}
+			else
+			{
+				window.alert("再见!");
+				return false;
+			}
+		}
+	</script>
+</head>
+<body>
+<form>
+	<input type="button" value="ALERT" onclick="alerter();">
+</form>
+</body>
+</html>
